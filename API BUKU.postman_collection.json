@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "4a4b4705-838c-43db-aa30-998c94b4bf2a",
+		"name": "API BUKU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22087046"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjkzMjUsInVzZXJuYW1lIjoiYWRtaW4ifQ._BIFjqVclskekCfXytWBQBuoNXAeNqYIr-bWIKGqB5k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"Fiksi\"\n    },\n\n    {\n        \"name\": \"Non Fiksi\"\n    },\n\n    {\n        \"name\" : \"Religi\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Categories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjkzMjUsInVzZXJuYW1lIjoiYWRtaW4ifQ._BIFjqVclskekCfXytWBQBuoNXAeNqYIr-bWIKGqB5k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get category by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjQ5OTUsInVzZXJuYW1lIjoiYWRtaW4ifQ.qoIBo5uaKPlO-3nHYcaYHnxsgBHevTA9yfTQrNjtSXU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/categories/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"categories",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjgzNDUsInVzZXJuYW1lIjoiYWRtaW4ifQ.bq8L-gdLCyt5XcshZuiS4riJdQK_KjaLsvp3Wc_rt7U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/categories/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"categories",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjQ5OTUsInVzZXJuYW1lIjoiYWRtaW4ifQ.qoIBo5uaKPlO-3nHYcaYHnxsgBHevTA9yfTQrNjtSXU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"title\": \"Harry Potter\",\n        \"category_id\": 1,\n        \"description\": \"A classic novel by J. K. Rowling.\",\n        \"image_url\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gramedia.com%2Fbest-seller%2Furutan-film-harry-potter%2F&psig=AOvVaw241GDgQ4NN1g7V_bxl2KsJ&ust=1737965543193000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCICYvaj4kosDFQAAAAAdAAAAABAE\",\n        \"release_year\": 1997,\n        \"price\": 150000,\n        \"total_pages\": 180\n    },\n\n    {\n        \"title\": \"Laskar Pelangi\",\n        \"category_id\": 1,\n        \"description\": \"A classic novel by Andrea Hirata.\",\n        \"image_url\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gramedia.com%2Fbest-seller%2Furutan-film-harry-potter%2F&psig=AOvVaw241GDgQ4NN1g7V_bxl2KsJ&ust=1737965543193000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCICYvaj4kosDFQAAAAAdAAAAABAE\",\n        \"release_year\": 2005,\n        \"price\": 95000,\n        \"total_pages\": 70\n    },\n\n    {\n        \"title\": \"Rich Dad, Poor Dad\",\n        \"category_id\": 2,\n        \"description\": \"A classic novel by Robert T. Kiyosaki.\",\n        \"image_url\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gramedia.com%2Fbest-seller%2Furutan-film-harry-potter%2F&psig=AOvVaw241GDgQ4NN1g7V_bxl2KsJ&ust=1737965543193000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCICYvaj4kosDFQAAAAAdAAAAABAE\",\n        \"release_year\": 1997,\n        \"price\": 250000,\n        \"total_pages\": 120\n    },\n    \n    {\n        \"title\": \"Test\",\n        \"category_id\": 2,\n        \"description\": \"A classic novel by Lorem ipsum.\",\n        \"image_url\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gramedia.com%2Fbest-seller%2Furutan-film-harry-potter%2F&psig=AOvVaw241GDgQ4NN1g7V_bxl2KsJ&ust=1737965543193000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCICYvaj4kosDFQAAAAAdAAAAABAE\",\n        \"release_year\": 1990,\n        \"price\": 25000,\n        \"total_pages\": 10\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjgzNDUsInVzZXJuYW1lIjoiYWRtaW4ifQ.bq8L-gdLCyt5XcshZuiS4riJdQK_KjaLsvp3Wc_rt7U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get books from category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjY0OTAsInVzZXJuYW1lIjoiYWRtaW4ifQ.qa1d_KYZixPW9ij3Q7jm6gRjm9acb1b-sFu9Jv3YXEI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/categories/1/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"categories",
+						"1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get book by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjgzNDUsInVzZXJuYW1lIjoiYWRtaW4ifQ.bq8L-gdLCyt5XcshZuiS4riJdQK_KjaLsvp3Wc_rt7U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/books/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"books",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NjY0OTAsInVzZXJuYW1lIjoiYWRtaW4ifQ.qa1d_KYZixPW9ij3Q7jm6gRjm9acb1b-sFu9Jv3YXEI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/books/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"books",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,304 @@
+basePath: /api
+definitions:
+  structs.Book:
+    type: object
+  structs.Category:
+    type: object
+  structs.User:
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@apibooks.com
+    name: API Support
+  description: API untuk manajemen buku dan kategori.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: API Books
+  version: "1.0"
+paths:
+  /books:
+    get:
+      description: Menampilkan Semua buku yang ada di database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List buku
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get all books
+      tags:
+      - Books
+  /books/{id}:
+    delete:
+      description: Menghapus buku sesuai ID yang diminta
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            $ref: '#/definitions/structs.Book'
+        "404":
+          description: Book not found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete a buku by ID
+      tags:
+      - Books
+    get:
+      description: Menampilkan buku sesuai ID yang diminta
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Detail buku
+          schema:
+            $ref: '#/definitions/structs.Book'
+        "404":
+          description: Book not found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get Book By ID
+      tags:
+      - Books
+  /books/batch:
+    post:
+      consumes:
+      - application/json
+      description: Menambahkan beberapa buku ke database
+      parameters:
+      - description: List of books
+        in: body
+        name: books
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/structs.Book'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            $ref: '#/definitions/structs.Book'
+        "400":
+          description: Invalid request or validation error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Add multiple books
+      tags:
+      - Books
+  /categories:
+    get:
+      description: Menampilkan semua kategori yang ada di database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of categories
+          schema:
+            $ref: '#/definitions/structs.Book'
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get all categories
+      tags:
+      - Categories
+  /categories/{id}:
+    delete:
+      description: Menghapus kategori sesuai ID
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            $ref: '#/definitions/structs.Category'
+        "404":
+          description: Category not found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete a category by ID
+      tags:
+      - Categories
+    get:
+      description: Menampilkan kategori sesuai ID yang diminta
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Category details
+          schema:
+            $ref: '#/definitions/structs.Book'
+        "404":
+          description: Category not found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get a category by ID
+      tags:
+      - Categories
+  /categories/{id}/books:
+    get:
+      description: Menampilkan semua buku yang ada di kategori tertentu
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of books
+          schema:
+            $ref: '#/definitions/structs.Book'
+        "404":
+          description: Category not found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get books by category ID
+      tags:
+      - Categories
+  /categories/batch:
+    post:
+      consumes:
+      - application/json
+      description: Menambahkan beberapa kategori ke database
+      parameters:
+      - description: List of categories
+        in: body
+        name: categories
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/structs.Category'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            $ref: '#/definitions/structs.Category'
+        "400":
+          description: Invalid request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Add multiple categories
+      tags:
+      - Categories
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate user dan generate JWT token
+      parameters:
+      - description: User credentials
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/structs.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Returns JWT token
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Invalid request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Invalid credentials
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Login
+      tags:
+      - Auth
+swagger: "2.0"
